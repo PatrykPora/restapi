@@ -32,3 +32,20 @@ dependencies {
 tasks.named('test') {
     useJUnitPlatform()
 }
+
+task generatePostsAndComments() {
+    doLast {
+        File dataSql = file("src/main/resources/data.sql")
+        dataSql.write("")
+        for (int i = 1; i <= 50; i++) {
+            dataSql.append("insert into posts(id, title, content, created) " +
+                    "values (${i}, 'Test post ${i}', 'Content ${i}', '" + LocalDateTime.now().minusDays(100 - i) + "');\n")
+        }
+
+        for (int i = 1; i <= 50; i++) {
+            int postId = 1 + i / 10
+            dataSql.append("insert into comment(id, post_id, content, created) " +
+                    "values (${i}, ${postId}, 'Comment ${i}', '" + LocalDateTime.now().minusDays(100 - i) + "');\n")
+        }
+    }
+}
