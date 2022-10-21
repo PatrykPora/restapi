@@ -1,4 +1,4 @@
-CREATE TABLE posts
+CREATE TABLE post
 (
     id      INTEGER AUTO_INCREMENT PRIMARY KEY,
     title   VARCHAR(300) NOT NULL,
@@ -15,5 +15,5 @@ CREATE TABLE comment
 );
 
 ALTER TABLE comment
-    ADD CONSTRAINT comment_posts_id
-        FOREIGN KEY (post_id) REFERENCES posts (id)
+    ADD CONSTRAINT comment_post_id
+        FOREIGN KEY (post_id) REFERENCES post (id)
