@@ -35,6 +35,9 @@ tasks.named('test') {
     useJUnitPlatform()
 }
 
+
+// this is for creation test data
+// first need to create data.sql in resources folder then hibernate is reading from there
 task generatePostsAndComments() {
     doLast {
         File dataSql = file("src/main/resources/data.sql")
