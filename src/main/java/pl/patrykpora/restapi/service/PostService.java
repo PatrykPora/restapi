@@ -2,9 +2,7 @@ package pl.patrykpora.restapi.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import pl.patrykpora.restapi.controller.PostController;
 import pl.patrykpora.restapi.model.Post;
-import pl.patrykpora.restapi.model.PostDto;
 import pl.patrykpora.restapi.repo.PostRepo;
 
 import java.util.List;
@@ -24,7 +22,7 @@ public class PostService {
         return postRepo.findById(id).get();
     }
 
-    public Post createPost(Post post) {
+    public Post savePost(Post post) {
         return postRepo.save(post);
     }
 }

@@ -1,4 +1,4 @@
-package pl.patrykpora.restapi.model;
+package pl.patrykpora.restapi.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
