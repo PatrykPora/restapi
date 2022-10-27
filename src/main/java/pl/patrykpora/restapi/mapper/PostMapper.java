@@ -2,11 +2,14 @@ package pl.patrykpora.restapi.mapper;
 
 import pl.patrykpora.restapi.dto.PostDto;
 import pl.patrykpora.restapi.dto.PostDtoToSave;
+import pl.patrykpora.restapi.dto.PostDtoWithComments;
 import pl.patrykpora.restapi.model.Post;
 
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import static pl.patrykpora.restapi.mapper.CommentMapper.mapToCommentDtoList;
 
 public class PostMapper {
 
@@ -20,8 +23,12 @@ public class PostMapper {
                 .collect(Collectors.toList());
     }
 
-    public static PostDto mapToPostDto(Post post) {
-        return new PostDto(post.getTitle(), post.getContent(), post.getCreated());
+    public static PostDtoWithComments mapToPostDtoWithComments(Post post) {
+        return new PostDtoWithComments(
+                post.getTitle(),
+                post.getContent(),
+                post.getCreated(),
+                mapToCommentDtoList(post.getComments()));
     }
 
     public static Post mapPostDtoToSaveToPost(PostDtoToSave postDtoToSave) {
@@ -31,6 +38,7 @@ public class PostMapper {
         postToAdd.setCreated(LocalDateTime.now());
         return postToAdd;
     }
+
 
 
 }

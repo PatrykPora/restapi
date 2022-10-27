@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 import pl.patrykpora.restapi.dto.PostDtoToSave;
+import pl.patrykpora.restapi.dto.PostDtoWithComments;
 import pl.patrykpora.restapi.model.Post;
 import pl.patrykpora.restapi.dto.PostDto;
 import pl.patrykpora.restapi.service.PostService;
@@ -29,9 +30,9 @@ public class PostController {
 
 
     @GetMapping("/post/{id}")
-    public PostDto getPost(@PathVariable Integer id) {
+    public PostDtoWithComments getPost(@PathVariable Integer id) {
        Post post = postService.getPostById(id);
-       return mapToPostDto(post);
+       return mapToPostDtoWithComments(post);
     }
 
 
