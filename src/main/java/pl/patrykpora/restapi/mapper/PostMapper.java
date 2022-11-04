@@ -13,6 +13,7 @@ import static pl.patrykpora.restapi.mapper.CommentMapper.mapToCommentDtoList;
 
 public class PostMapper {
 
+    private PostMapper(){}
 
     public static List<PostDto> mapPostsToPostDtoList(List<Post> allPost) {
         return allPost.stream()
